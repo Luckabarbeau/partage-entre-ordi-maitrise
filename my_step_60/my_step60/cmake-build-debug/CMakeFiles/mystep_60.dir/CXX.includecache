@@ -65,6 +65,8 @@ iostream
 -
 fstream
 -
+deal.II/numerics/vector_tools.h
+-
 
 /home/lucka/Programming/dealii/build/include/deal.II/base/aligned_vector.h
 deal.II/base/config.h

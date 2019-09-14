@@ -2,14 +2,14 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="mystep_60" targetName="distclean" />
-      <config projectName="mystep_60" targetName="run" />
       <config projectName="mystep_60" targetName="debug" />
-      <config projectName="mystep_60" targetName="info" />
-      <config projectName="mystep_60" targetName="strip_comments" />
       <config projectName="mystep_60" targetName="mystep_60" />
-      <config projectName="mystep_60" targetName="runclean" />
+      <config projectName="mystep_60" targetName="run" />
       <config projectName="mystep_60" targetName="release" />
+      <config projectName="mystep_60" targetName="info" />
+      <config projectName="mystep_60" targetName="distclean" />
+      <config projectName="mystep_60" targetName="runclean" />
+      <config projectName="mystep_60" targetName="strip_comments" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -36,7 +36,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Projet C++/step_60/build" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -112,7 +112,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568482017146</updated>
-      <workItem from="1568482018441" duration="660000" />
+      <workItem from="1568482018441" duration="2054000" />
+      <workItem from="1568484107187" duration="839000" />
     </task>
     <servers />
   </component>
@@ -124,7 +125,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

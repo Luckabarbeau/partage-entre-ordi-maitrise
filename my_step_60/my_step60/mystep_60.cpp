@@ -50,7 +50,7 @@
 
 
 //define class that would be call during the finite elements analysis
-namespace Mystep60 {
+namespace mystep60 {
     using namespace dealii;
     template<int dim, int spacedim = dim>
     class DistributedLagrangeProblem {
@@ -64,11 +64,11 @@ namespace Mystep60 {
             Parameters();
 
             // define the number of time that the code is gonna refine the first mesh
-            unsigned int initial_refinement;
+            unsigned int initial_refinement=4;
             // define the number of refinement that is applied on the part of the base mesh and the sub domain where the condtions are imposed
-            unsigned int delta_refinement;
+            unsigned int delta_refinement=3;
             // number of refinement of the grid that make the subdomaine
-            unsigned int initial_embedded_grid_refinement;
+            unsigned int initial_embedded_grid_refinement=8;
             // we are working on a unit square for this exemple so we need to define which boundary as dirichlet =0
             std::list<types::boundary_id> homogeneous_dirichlet_ids{0, 1, 2, 3};
             // finite element degree on the ebedded domain
@@ -256,7 +256,7 @@ namespace Mystep60 {
             );
         else
             sub_domain_mapping = std_cxx14::make_unique<MappingFEField<dim, spacedim, Vector<double>, DoFHandler<
-                    dim, spacedim>>>(*configuration_dof_handler, configuration, configuration);
+                    dim, spacedim>>>(*configuration_dof_handler, configuration);
 
         // set it up on the sub matrix domain
         setup_matrix_sub();
@@ -317,7 +317,7 @@ namespace Mystep60 {
         fe = std_cxx14::make_unique<FE_Q<spacedim>>(parameters.domain_fe_deg);
         dof_handler->distribute_dofs(*fe);
         // generate constraint element for the nodes and the boundary condition
-        DoFTools::make_hanging_node_constraints(*mesh, constraints);
+        DoFTools::make_hanging_node_constraints(*dof_handler, constraints);
         for (auto id : parameters.homogeneous_dirichlet_ids) {
             VectorTools::interpolate_boundary_values(*dof_handler, id, Functions::ZeroFunction<spacedim>(), constraints);
         }
@@ -379,7 +379,7 @@ namespace Mystep60 {
                                                static_cast<const Function<spacedim> *>(nullptr), constraints);
 
             VectorTools::create_right_hand_side(*sub_domain_mapping, *dof_handler_sub,
-                                                QGauss<dim>(2 * fe_sub->degree + 1), sub_domain_value, sub_domain_rhs);
+                                                QGauss<dim>(2 * fe_sub->degree + 1), sub_domain_value_function, sub_domain_rhs);
 
 
         }
@@ -463,7 +463,7 @@ namespace Mystep60 {
 int main (int argc, char **argv) {
     try {
         using namespace dealii;
-        using namespace Mystep60;
+        using namespace mystep60;
         const unsigned int dim = 1, spacedim = 2;
         DistributedLagrangeProblem<dim, spacedim>::Parameters parameters;
         DistributedLagrangeProblem<dim, spacedim> problem(parameters);
