@@ -43,7 +43,7 @@
 #include <deal.II/lac/linear_operator_tools.h>
 #include <iostream>
 #include <fstream>
-
+#include <deal.II/numerics/vector_tools.h>
 
 // make it possible to directly call dealII function
 
@@ -122,15 +122,15 @@ namespace Mystep60 {
 
         // std:: unique_ptr is there to permite overload of variable not sure ?????????????????????????????????????????????????????????????
         std::unique_ptr<Triangulation<spacedim>> mesh;
-        std::unique_ptr<GridTools::Cache<spacedim>> mesh_tools;
-        std::unique_ptr<FE_Q<spacedim>> fe;
+        std::unique_ptr<GridTools::Cache<spacedim,spacedim>> mesh_tools;
+        std::unique_ptr<FiniteElement<spacedim>> fe;
         std::unique_ptr<DoFHandler<spacedim>> dof_handler;
 
 
         //define global variable of the embedded domain
-        std::unique_ptr<Triangulation<dim>> mesh_sub;
-        std::unique_ptr<FE_Q<dim>> fe_sub;
-        std::unique_ptr<DoFHandler<dim>> dof_handler_sub;
+        std::unique_ptr<Triangulation<dim , spacedim>> mesh_sub;
+        std::unique_ptr<FiniteElement<dim, spacedim>> fe_sub;
+        std::unique_ptr<DoFHandler<dim,spacedim>> dof_handler_sub;
 
         // elements needed to do the deformation of the subdomain
 
@@ -211,11 +211,11 @@ namespace Mystep60 {
             ParameterAcceptor::prm.set("Function expression", "R*cos(2*pi*x)+Cx; R*sin(2*pi*x)+Cy");
         });
         // Define the sub domain value function to a csontant
-        sub_domain_value_function.declare_parameters_call_back(
+        sub_domain_value_function.declare_parameters_call_back.connect(
                 []() -> void { ParameterAcceptor::prm.set("Function expression", "1"); });
         // define parameters of the solver
 
-        schur_solver_control.declare_parameters_call_back([]() -> void {
+        schur_solver_control.declare_parameters_call_back.connect([]() -> void {
             ParameterAcceptor::prm.set("Max steps", "1000");
             ParameterAcceptor::prm.set("Reduction", "1.e-12");
             ParameterAcceptor::prm.set("Tolerance", "1.e-12");
@@ -235,14 +235,14 @@ namespace Mystep60 {
         mesh->refine_global(parameters.initial_refinement);
         mesh_tools = std_cxx14::make_unique<GridTools::Cache<spacedim, spacedim>>(*mesh);
         // generate mesh of subdomain
-        mesh_sub = std_cxx14::make_unique<Triangulation<dim>>();
+        mesh_sub = std_cxx14::make_unique<Triangulation<dim, spacedim>>();
         GridGenerator::hyper_cube(*mesh_sub);
         mesh_sub->refine_global(parameters.initial_embedded_grid_refinement);
 
         // generate the finite element sub domain information
         configuration_FE = std_cxx14::make_unique<FESystem<dim, spacedim>>(
                 FE_Q<dim, spacedim>(parameters.embedded_fe_deg), spacedim);
-        configuration_dof_handler = std_cxx14::make_unique<FESystem<dim, spacedim>>(*mesh_sub);
+        configuration_dof_handler = std_cxx14::make_unique<DoFHandler<dim, spacedim>>(*mesh_sub);
         configuration_dof_handler->distribute_dofs(*configuration_FE);
         configuration.reinit(configuration_dof_handler->n_dofs());
 
@@ -263,7 +263,7 @@ namespace Mystep60 {
 
 
         //define the support point of the sub domain so we can refine arrond it in a later operation
-        std::vector<Point<spacedim>> support_point(*dof_handler_sub->n_dofs());
+        std::vector<Point<spacedim>> support_point(dof_handler_sub->n_dofs());
         if (parameters.delta_refinement != 0)
             DoFTools::map_dofs_to_support_points(*sub_domain_mapping, *dof_handler_sub, support_point);
 
@@ -280,7 +280,7 @@ namespace Mystep60 {
                     }
 
             }
-            mesh->excute_coarsening_and_refinement();
+            mesh->execute_coarsening_and_refinement();
         }
 
         // to have proper results we need the sub domain grid to be in general smaller then the domain grid so in most cases the cells int the sub domaine dont span on more then 2 cell in the general domain
@@ -319,35 +319,36 @@ namespace Mystep60 {
         // generate constraint element for the nodes and the boundary condition
         DoFTools::make_hanging_node_constraints(*mesh, constraints);
         for (auto id : parameters.homogeneous_dirichlet_ids) {
-            VectorTools::interpolate_boundary_values(dof_handler, id, Functions::ZeroFunction<spacedim>(), constraints);
+            VectorTools::interpolate_boundary_values(*dof_handler, id, Functions::ZeroFunction<spacedim>(), constraints);
         }
         constraints.close();
 
         //define the dynamic sparcdity pattern for the domain
 
-        DynamicSparsityPattern dsp(dof_handler.n_dofs(), dof_handler.n_dofs());
-        DoFTools::make_sparsity_pattern(dof_handler, dsp, constraints);
+        DynamicSparsityPattern dsp(dof_handler->n_dofs(), dof_handler->n_dofs());
+        DoFTools::make_sparsity_pattern(*dof_handler, dsp, constraints);
         stiffness_sparsity.copy_from(dsp);
-        stiffnes_matrix.reinit(dof_handler.n_dofs);
-        rhs.reinit(dof_handler.n_dofs);
-        deallog << "embedding Dofs: " << dof_handler.n_dofs << std::endl;
+        stiffnes_matrix.reinit(stiffness_sparsity);
+        solution.reinit(dof_handler->n_dofs());
+        rhs.reinit(dof_handler->n_dofs());
+        deallog << "embedding Dofs: " << dof_handler->n_dofs() << std::endl;
 
     }
 
     template<int dim, int spacedim>
     void DistributedLagrangeProblem<dim, spacedim>::setup_matrix_sub() {
         //generate usual stuff for the sub domain
-        dof_handler_sub = std_cxx14::make_unique<DoFHandler<dim>> * (*mesh_sub);
-        fe_sub = std_cxx14::make_unique<FE_Q<dim>> * (parameters.embedded_fe_deg);
-        dof_handler_sub.distributes_dofs(*fe_sub);
+        dof_handler_sub = std_cxx14::make_unique<DoFHandler<dim, spacedim>> (*mesh_sub);
+        fe_sub = std_cxx14::make_unique<FE_Q<dim, spacedim>>  (parameters.embedded_fe_deg);
+        dof_handler_sub->distribute_dofs(*fe_sub);
 
         // define the value of the sub domaine
 
-        lambda.reinit(dof_handler_sub.n_dofs());
-        sub_domain_rhs.reinit(dof_handler_sub.n_dofs());
-        sub_domain_value.reinit(dof_handler_sub.n_dofs());
+        lambda.reinit(dof_handler_sub->n_dofs());
+        sub_domain_rhs.reinit(dof_handler_sub->n_dofs());
+        sub_domain_value.reinit(dof_handler_sub->n_dofs());
 
-        deallog << "Embedded dofs:" << dof_handler_sub.n_dofs() << std::endl;
+        deallog << "Embedded dofs:" << dof_handler_sub->n_dofs() << std::endl;
 
 
     }
@@ -358,7 +359,7 @@ namespace Mystep60 {
         TimerOutput::Scope timer_section(monitor, "Setup coupling");
 
         QGauss<dim> quad(parameters.coupling_quadrature_order);
-        DynamicSparsityPattern dsp(dof_handler.n_dofs(), dof_handler_sub.n_dofs());
+        DynamicSparsityPattern dsp(dof_handler->n_dofs(), dof_handler_sub->n_dofs());
 
         //match the two grid value  whit the systeme containe in a single object
         NonMatching::create_coupling_sparsity_pattern(*mesh_tools, *dof_handler, *dof_handler_sub, quad, dsp,
@@ -374,10 +375,11 @@ namespace Mystep60 {
     void DistributedLagrangeProblem<dim, spacedim>::define_probleme() {
         {//Assemble the matrix and the right hand side whit fancy function contrary to the usual loop
             TimerOutput::Scope timer_section(monitor, "Assemble System");
-            MatrixTools::create_laplace_matrix(*dof_handler, QGauss<spacedim>(2 * fe.degree() + 1), stiffnes_matrix,
+            MatrixTools::create_laplace_matrix(*dof_handler, QGauss<spacedim>(2 * fe->degree + 1), stiffnes_matrix,
                                                static_cast<const Function<spacedim> *>(nullptr), constraints);
+
             VectorTools::create_right_hand_side(*sub_domain_mapping, *dof_handler_sub,
-                                                QGauss<dim>(2 * fe_sub.degree() + 1), sub_domain_value, sub_domain_rhs);
+                                                QGauss<dim>(2 * fe_sub->degree + 1), sub_domain_value, sub_domain_rhs);
 
 
         }

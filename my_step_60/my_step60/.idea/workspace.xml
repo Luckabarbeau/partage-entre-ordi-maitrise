@@ -2,14 +2,14 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="mystep_60" targetName="debug" />
-      <config projectName="mystep_60" targetName="mystep_60" />
-      <config projectName="mystep_60" targetName="run" />
-      <config projectName="mystep_60" targetName="release" />
-      <config projectName="mystep_60" targetName="info" />
       <config projectName="mystep_60" targetName="distclean" />
-      <config projectName="mystep_60" targetName="runclean" />
+      <config projectName="mystep_60" targetName="run" />
+      <config projectName="mystep_60" targetName="debug" />
+      <config projectName="mystep_60" targetName="info" />
       <config projectName="mystep_60" targetName="strip_comments" />
+      <config projectName="mystep_60" targetName="mystep_60" />
+      <config projectName="mystep_60" targetName="runclean" />
+      <config projectName="mystep_60" targetName="release" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -18,7 +18,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a2c64ec-6fd4-4118-8712-99d4ff5f003b" name="Default Changelist" comment="" />
+    <list default="true" id="5167e81c-3054-4e91-87c9-b2a8bac8163a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +29,11 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
-  <component name="ProjectId" id="1QTbh22pZb1qtHZ5wXAs78EqogP" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1QpyppHs6XXFEFMiuV7mOjng80G" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -103,39 +107,27 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9a2c64ec-6fd4-4118-8712-99d4ff5f003b" name="Default Changelist" comment="" />
-      <created>1567797648824</created>
+      <changelist id="5167e81c-3054-4e91-87c9-b2a8bac8163a" name="Default Changelist" comment="" />
+      <created>1568482017146</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1567797648824</updated>
-      <workItem from="1567797649997" duration="8291000" />
-      <workItem from="1568139960166" duration="25678000" />
-      <workItem from="1568411881948" duration="650000" />
+      <updated>1568482017146</updated>
+      <workItem from="1568482018441" duration="660000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$USER_HOME$/soft/dealii/build/include/deal.II/base/parameter_acceptor.h</url>
-          <line>353</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$USER_HOME$/soft/dealii/build/include/deal.II/base/parameter_acceptor.h</url>
-          <line>356</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/mystep_60.cpp</url>
-          <line>36</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

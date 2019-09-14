@@ -1,4 +1,4 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60"
+/home/lucka/Programming/CLion-2019.2.1/clion-2019.2.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/lucka/Documents/Polytechnique/Partage entre Ordi maitrise/partage-entre-ordi-maitrise/my_step_60/my_step60"
 -- The C compiler identification is GNU 7.4.0
 -- The CXX compiler identification is GNU 7.4.0
 -- Check for working C compiler: /usr/bin/cc
@@ -17,7 +17,7 @@
 ###
 #
 #  Project  mystep_60  set up with  deal.II-9.1.1  found at
-#      /home/luckabarbeau/soft/dealii/build
+#      /home/lucka/Programming/dealii/build
 #
 #  CMAKE_BUILD_TYPE:          Debug
 #
@@ -46,4 +46,4 @@
 ###
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug
+-- Build files have been written to: /home/lucka/Documents/Polytechnique/Partage entre Ordi maitrise/partage-entre-ordi-maitrise/my_step_60/my_step60/cmake-build-debug
