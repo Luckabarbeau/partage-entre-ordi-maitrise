@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="mystep_60"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\soft\;CMake Files\..\..\..\..\..\..\soft\dealii\;CMake Files\..\..\..\..\..\..\soft\dealii\build\;CMake Files\..\..\..\..\..\..\soft\dealii\build\lib\;CMake Files\..\..\..\..\..\..\soft\dealii\build\lib\cmake\;CMake Files\..\..\..\..\..\..\soft\dealii\build\lib\cmake\deal.II\;CMake Files\..\..\..\..\..\..\soft\dealii\build\share\;CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\;CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\macros\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="info">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 info"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="strip_comments">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 strip_comments"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="run">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 run"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mystep_60">
+				<Option output="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug/mystep_60" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_NO_AUTO_PTR"/>
+					<Add option="-DDEBUG"/>
+					<Add option="-DTBB_USE_DEBUG"/>
+					<Add option="-DTBB_DO_ASSERT=1"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/build/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/tbb-2018_U2/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/boost-1.62.0/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/umfpack/UMFPACK/Include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/umfpack/AMD/Include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/muparser_v2_2_4/include"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include"/>
+					<Add directory="/home/luckabarbeau/share/trilinos/include"/>
+					<Add directory="/home/luckabarbeau/soft/p4est/p4est-install/FAST/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 mystep_60"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mystep_60/fast">
+				<Option output="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug/mystep_60" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_NO_AUTO_PTR"/>
+					<Add option="-DDEBUG"/>
+					<Add option="-DTBB_USE_DEBUG"/>
+					<Add option="-DTBB_DO_ASSERT=1"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/build/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/tbb-2018_U2/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/boost-1.62.0/include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/umfpack/UMFPACK/Include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/umfpack/AMD/Include"/>
+					<Add directory="/home/luckabarbeau/soft/dealii/dealii-9.1.1/bundled/muparser_v2_2_4/include"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include"/>
+					<Add directory="/home/luckabarbeau/share/trilinos/include"/>
+					<Add directory="/home/luckabarbeau/soft/p4est/p4est-install/FAST/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 mystep_60/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="debug">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 debug"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="release">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 release"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="runclean">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 runclean"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="distclean">
+				<Option working_dir="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 distclean"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut\ maitrise/my_step_60/my_step60/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/mystep_60.cpp">
+			<Option target="mystep_60"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/lib/cmake/deal.II/deal.IIConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\lib\cmake\deal.II\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/lib/cmake/deal.II/deal.IIConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\lib\cmake\deal.II\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/lib/cmake/deal.II/deal.IITargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\lib\cmake\deal.II\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/share/deal.II/macros/macro_deal_ii_add_test.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/share/deal.II/macros/macro_deal_ii_initialize_cached_variables.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/share/deal.II/macros/macro_deal_ii_pickup_tests.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/share/deal.II/macros/macro_deal_ii_query_git_information.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/my_step_60/my_step60/../../../../../../soft/dealii/build/share/deal.II/macros/macro_deal_ii_setup_target.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\soft\dealii\build\share\deal.II\macros\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
