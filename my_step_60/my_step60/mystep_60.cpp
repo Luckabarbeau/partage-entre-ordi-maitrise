@@ -130,7 +130,7 @@ namespace mystep60 {
         //define global variable of the embedded domain
         std::unique_ptr<Triangulation<dim , spacedim>> mesh_sub;
         std::unique_ptr<FiniteElement<dim, spacedim>> fe_sub;
-        std::unique_ptr<DoFHandler<dim,spacedim>> dof_handler_sub;
+        std::unique_ptr<DoFHandler<dim, spacedim>> dof_handler_sub;
 
         // elements needed to do the deformation of the subdomain
 
@@ -173,7 +173,8 @@ namespace mystep60 {
 // define the parameter file
     template<int dim, int spacedim>
     DistributedLagrangeProblem<dim, spacedim>::Parameters::Parameters():
-            ParameterAcceptor("/Distributed Lagrange<" + Utilities::int_to_string(dim) + "," +
+            ParameterAcceptor("/Distributed Lagrange<" +
+                              Utilities::int_to_string(dim) + "," +
                               Utilities::int_to_string(spacedim) + ">/") {
 
         add_parameter("Initial embedding space refinement", initial_refinement);
@@ -201,18 +202,18 @@ namespace mystep60 {
     template<int dim, int spacedim>
     DistributedLagrangeProblem<dim, spacedim>::DistributedLagrangeProblem(const Parameters &parameters)
             : parameters(parameters), configuration_function("Embedded configuration", spacedim),
-              sub_domain_value_function("embedded value"), schur_solver_control("Schur solver control"),
+              sub_domain_value_function("Embedded value"), schur_solver_control("Schur solver control"),
               monitor(std::cout, TimerOutput::summary, TimerOutput::cpu_and_wall_times) {
         //default value for the parameter Acceptor class created from parameter acceptor proxy
 
         // define the function and value of the expression of the sub domain
         configuration_function.declare_parameters_call_back.connect([]() -> void {
-            ParameterAcceptor::prm.set("Function constants", "R=0.3, Cx=0.4 Cy=0.4");
+            ParameterAcceptor::prm.set("Function constants", "R=.3, Cx=.4, Cy=.4");
             ParameterAcceptor::prm.set("Function expression", "R*cos(2*pi*x)+Cx; R*sin(2*pi*x)+Cy");
         });
         // Define the sub domain value function to a csontant
-        sub_domain_value_function.declare_parameters_call_back.connect(
-                []() -> void { ParameterAcceptor::prm.set("Function expression", "1"); });
+        sub_domain_value_function.declare_parameters_call_back.connect([]() -> void {
+            ParameterAcceptor::prm.set("Function expression", "1"); });
         // define parameters of the solver
 
         schur_solver_control.declare_parameters_call_back.connect([]() -> void {
@@ -331,7 +332,7 @@ namespace mystep60 {
         stiffnes_matrix.reinit(stiffness_sparsity);
         solution.reinit(dof_handler->n_dofs());
         rhs.reinit(dof_handler->n_dofs());
-        deallog << "embedding Dofs: " << dof_handler->n_dofs() << std::endl;
+        deallog << "Embedding Dofs: " << dof_handler->n_dofs() << std::endl;
 
     }
 
@@ -363,9 +364,9 @@ namespace mystep60 {
 
         //match the two grid value  whit the systeme containe in a single object
         NonMatching::create_coupling_sparsity_pattern(*mesh_tools, *dof_handler, *dof_handler_sub, quad, dsp,
-                                                      AffineConstraints < double > (), ComponentMask(), ComponentMask(),
+                                                      AffineConstraints<double>(), ComponentMask(), ComponentMask(),
                                                       *sub_domain_mapping);
-        //
+
         coupling_sparsity.copy_from(dsp);
         coupling_matrix.reinit(coupling_sparsity);
     }
@@ -387,7 +388,7 @@ namespace mystep60 {
             TimerOutput::Scope timer_section(monitor, "Assemble Coupling");
             QGauss<dim> quad(parameters.coupling_quadrature_order);
             NonMatching::create_coupling_mass_matrix(*mesh_tools, *dof_handler, *dof_handler_sub, quad, coupling_matrix,
-                                                     AffineConstraints < double > (), ComponentMask(), ComponentMask(),
+                                                     AffineConstraints<double> (), ComponentMask(), ComponentMask(),
                                                      *sub_domain_mapping);
             VectorTools::interpolate(*sub_domain_mapping, *dof_handler_sub, sub_domain_value_function,
                                      sub_domain_value);
@@ -498,7 +499,7 @@ int main (int argc, char **argv) {
                   << "Aborting!" << std::endl
                   << "----------------------------------------------------"
                   << std::endl;
-        return 1;
+        return 2;
     }
     return 0;
 

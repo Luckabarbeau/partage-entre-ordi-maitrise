@@ -23,7 +23,7 @@ subsection Distributed Lagrange<1,2>
     # `pi=3.1415926536' and then use `pi' in the expression of the actual
     # formula. (That said, for convenience this class actually defines both
     # `pi' and `Pi' by default, but you get the idea.)
-    set Function constants  = R=0.3, Cx=0.4 Cy=0.4               # default: 
+    set Function constants  = R=.3, Cx=.4, Cy=.4                 # default: 
 
     # The formula that denotes the function you want to evaluate for
     # particular values of the independent variables. This expression may
@@ -54,16 +54,7 @@ subsection Distributed Lagrange<1,2>
     set Variable names      = x,y,t
   end
 
-  subsection Schur solver control
-    set Log frequency = 1
-    set Log history   = false
-    set Log result    = true
-    set Max steps     = 1000   # default: 100
-    set Reduction     = 1.e-12 # default: 1.e-2
-    set Tolerance     = 1.e-12 # default: 1.e-10
-  end
-
-  subsection embedded value
+  subsection Embedded value
     # Sometimes it is convenient to use symbolic constants in the expression
     # that describes the function, rather than having to use its numeric value
     # everywhere the constant appears. These values can be defined using this
@@ -102,6 +93,15 @@ subsection Distributed Lagrange<1,2>
     # input parameter to `r,phi,theta,t' and then use these variable names in
     # your function expression.
     set Variable names      = x,y,t
+  end
+
+  subsection Schur solver control
+    set Log frequency = 1
+    set Log history   = false
+    set Log result    = true
+    set Max steps     = 1000   # default: 100
+    set Reduction     = 1.e-12 # default: 1.e-2
+    set Tolerance     = 1.e-12 # default: 1.e-10
   end
 
 end

@@ -2,7 +2,7 @@ MESSAGE(
 "###
 #
 #  Project  mystep_60  set up with  deal.II-9.1.1  found at
-#      /home/lucka/Programming/dealii/build
+#      /home/luckabarbeau/soft/dealii/build
 #
 #  CMAKE_BUILD_TYPE:          Debug
 #

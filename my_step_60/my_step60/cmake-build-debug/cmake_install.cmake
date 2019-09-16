@@ -1,4 +1,4 @@
-# Install script for directory: /home/lucka/Documents/Polytechnique/Partage entre Ordi maitrise/partage-entre-ordi-maitrise/my_step_60/my_step60
+# Install script for directory: /home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/git partage entre ordi/partage-entre-ordi-maitrise/my_step_60/my_step60
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/lucka/Documents/Polytechnique/Partage entre Ordi maitrise/partage-entre-ordi-maitrise/my_step_60/my_step60/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/luckabarbeau/Documents/Polytechnique/Maitrise/Debut maitrise/git partage entre ordi/partage-entre-ordi-maitrise/my_step_60/my_step60/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
