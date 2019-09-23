@@ -1,7 +1,7 @@
 #include <deal.II/base/logstream.h>
 #include <deal.II/base/utilities.h>
 #include <deal.II/base/timer.h>
-
+#include <deal.II/lac/sparse_ilu.h>
 // define public parameter
 #include <deal.II/base/parameter_acceptor.h>
 #include <deal.II/grid/tria.h>
@@ -26,7 +26,7 @@
 #include <deal.II/numerics/vector_tools.h>
 #include <deal.II/numerics/matrix_tools.h>
 
-
+#include <deal.II/lac/trilinos_precondition.h>
 // tool to allow user to do cumputation on the non matching grid of the lagrange probleme and the lagrange multiplier probleme
 
 #include <deal.II/non_matching/coupling.h>
@@ -65,11 +65,11 @@ namespace mystep60 {
             Parameters();
 
             // define the number of time that the code is gonna refine the first mesh
-            unsigned int initial_refinement=1;
+            unsigned int initial_refinement=5;
             // define the number of refinement that is applied on the part of the base mesh and the sub domain where the condtions are imposed
-            unsigned int delta_refinement=3;
+            unsigned int delta_refinement=0;
             // number of refinement of the grid that make the subdomaine
-            unsigned int initial_embedded_grid_refinement=8;
+            unsigned int initial_embedded_grid_refinement=12;
             // we are working on a unit square for this exemple so we need to define which boundary as dirichlet =0
             std::list<types::boundary_id> homogeneous_dirichlet_ids{0, 1, 2, 3};
             // finite element degree on the ebedded domain
@@ -118,6 +118,7 @@ namespace mystep60 {
 
 
         void solve();
+        void solve_direct();
 
         void output();
 
@@ -157,6 +158,8 @@ namespace mystep60 {
         SparsityPattern coupling_sparsity;
         SparseMatrix<double> stiffnes_matrix;
         SparseMatrix<double> coupling_matrix;
+        SparseMatrix<double> global_matrix;
+        SparseMatrix<double> coupling_transpose;
 
         // make possible to have hanging not and pass boundary condition on it
         AffineConstraints<double> constraints;
@@ -220,9 +223,9 @@ namespace mystep60 {
         // define parameters of the solver
 
         schur_solver_control.declare_parameters_call_back.connect([]() -> void {
-            ParameterAcceptor::prm.set("Max steps", "100000");
-            ParameterAcceptor::prm.set("Reduction", "1.e-12");
-            ParameterAcceptor::prm.set("Tolerance", "1.e-12");
+            ParameterAcceptor::prm.set("Max steps", "10000");
+            ParameterAcceptor::prm.set("Reduction", "1.e-6");
+            ParameterAcceptor::prm.set("Tolerance", "1.e-6");
         });
 
     }
@@ -403,13 +406,21 @@ namespace mystep60 {
 
         }
         {// Assemble coupling systeme and the G function whit fancy function because it allow to group all mapping of the two mesh in one object
-            TimerOutput::Scope timer_section(monitor, "Assemble Coupling");
-            QGauss<dim> quad(parameters.coupling_quadrature_order);
-            NonMatching::create_coupling_mass_matrix(*mesh_tools, *dof_handler, *dof_handler_sub, quad, coupling_matrix,
-                                                     AffineConstraints<double> (), ComponentMask(), ComponentMask(),
-                                                     *sub_domain_mapping);
-            VectorTools::interpolate(*sub_domain_mapping, *dof_handler_sub, sub_domain_value_function,
-                                     sub_domain_value);
+            {
+                TimerOutput::Scope timer_section(monitor, "Assemble Coupling - Mass Matrix");
+                QGauss<dim> quad(parameters.coupling_quadrature_order);
+                NonMatching::create_coupling_mass_matrix(*mesh_tools, *dof_handler, *dof_handler_sub, quad,
+                                                         coupling_matrix,
+                                                         AffineConstraints < double > (), ComponentMask(),
+                                                         ComponentMask(),
+                                                         *sub_domain_mapping);
+            }
+            {
+                TimerOutput::Scope timer_section(monitor, "Assemble Coupling - Interpolation");
+
+                VectorTools::interpolate(*sub_domain_mapping, *dof_handler_sub, sub_domain_value_function,
+                                         sub_domain_value);
+            }
 
         }
     }
@@ -428,11 +439,50 @@ namespace mystep60 {
         auto C = transpose_operator(Ct);
         auto K_inv = linear_operator(K, K_inv_umfpack);
 
+
+
         //Schur Complement method
         auto S = C * K_inv * Ct;
+        //base on step 20 methode whit schur operator
+
+        //IterationNumberControl iteration_number_control_aS(30, 1.e-11);
+        //SolverCG<>             solver_aS(iteration_number_control_aS);
+        //const auto preconditioner_S = inverse_operator(S,solver_aS, PreconditionIdentity());
         SolverCG<Vector<double>> solver_cg(schur_solver_control);
-        auto S_inv = inverse_operator(S, solver_cg, PreconditionIdentity());
+        auto S_inv = inverse_operator(S, solver_cg,PreconditionIdentity());
         lambda = S_inv * sub_domain_rhs;
+        solution = K_inv * Ct * lambda;
+        constraints.distribute(solution);
+    }
+
+    template<int dim, int spacedim>
+    void DistributedLagrangeProblem<dim, spacedim>::solve_direct() {
+        //solve the probleme
+        TimerOutput::Scope timer_section(monitor, "Solve");
+        // developpe the inverse of the the stiffness matrix
+
+        SparseDirectUMFPACK K_inv_umfpack;
+        K_inv_umfpack.initialize(stiffnes_matrix);
+        auto K = linear_operator(stiffnes_matrix);
+        auto Ct = linear_operator(coupling_matrix);
+        auto C = transpose_operator(Ct);
+        auto K_inv = linear_operator(K, K_inv_umfpack);
+
+
+
+        //Schur Complement method
+        auto S = C * K_inv * Ct;
+        //base on step 20 methode whit schur operator
+
+        //IterationNumberControl iteration_number_control_aS(30, 1.e-11);
+        //SolverCG<>             solver_aS(iteration_number_control_aS);
+        //const auto preconditioner_S = inverse_operator(S,solver_aS, PreconditionIdentity());
+        SparseDirectUMFPACK L_inv_umfpack;
+        L_inv_umfpack.initialize(S);
+        //SolverCG<Vector<double>> solver_cg(schur_solver_control);
+        //auto S_inv = inverse_operator(S, solver_cg,PreconditionIdentity());
+        //auto S_inv = linear_operator(S,L_inv_umfpack);
+        L_inv_umfpack.vmult(lambda,sub_domain_rhs);
         solution = K_inv * Ct * lambda;
         constraints.distribute(solution);
     }
@@ -472,7 +522,7 @@ namespace mystep60 {
 
 
 
-        for (unsigned int cycle=0 ; cycle<4 ; ++cycle) {
+        for (unsigned int cycle=0 ; cycle<3 ; ++cycle) {
             if (cycle==0)
             setup_grid();
             else
